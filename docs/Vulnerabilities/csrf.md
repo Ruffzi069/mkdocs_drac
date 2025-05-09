@@ -24,13 +24,13 @@ CSRF exploits the trust a web app has in the user's browser, making **unauthoriz
   > Use **"Generate CSRF PoC"** feature in Burp's Repeater/Proxy.
 
 - **Postman** – Test endpoints with and without CSRF tokens.
-  ```html
-  POST /update_email HTTP/1.1
-  Host: example.com
-  Content-Type: application/x-www-form-urlencoded
-  Cookie: sessionid=12345
+```html
+POST /update_email HTTP/1.1
+Host: example.com
+Content-Type: application/x-www-form-urlencoded
+Cookie: sessionid=12345
 
-  email=attacker@example.com
+email=attacker@example.com
   ```
 
 ---
