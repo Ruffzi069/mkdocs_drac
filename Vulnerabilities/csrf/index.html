@@ -197,8 +197,8 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h2 id="csrf-cross-site-request-forgery">🛡️ CSRF (Cross-Site Request Forgery)</h2>
-<h3 id="definition">📖 Definition</h3>
+        <p><h2 id="csrf-cross-site-request-forgery">CSRF (Cross-Site Request Forgery)</h2>
+<h3 id="definition">Definition</h3>
 <p>CSRF exploits the trust a web app has in the user's browser, making <strong>unauthorized actions</strong> on behalf of an authenticated user.</p>
 <h3 id="example-attack">⚠️ Example Attack</h3>
 <pre><code class="language-html">&lt;form action=&quot;https://bank.com/transfer&quot; method=&quot;POST&quot;&gt;
@@ -207,14 +207,14 @@
 &lt;/form&gt;
 &lt;script&gt;document.forms[0].submit();&lt;/script&gt;
 </code></pre>
-<h3 id="mitigations">✅ Mitigations</h3>
+<h3 id="mitigations">Mitigations</h3>
 <ul>
 <li>Use <strong>CSRF tokens</strong> in forms.</li>
 <li>Set <strong>SameSite</strong> cookies.</li>
 <li>Use <strong>double submit cookie</strong> strategy.</li>
 <li>Require <strong>user interaction or re-authentication</strong> for sensitive actions.</li>
 </ul>
-<h3 id="testing-tools">🔧 Testing Tools:</h3>
+<h3 id="testing-tools">Testing Tools:</h3>
 <ul>
 <li>
 <p><strong>Burp Suite</strong> – Intercept and manipulate CSRF-prone requests.</p>
