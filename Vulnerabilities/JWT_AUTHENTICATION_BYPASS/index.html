@@ -242,44 +242,6 @@
 <li>Refer to online attack books for further fuzzing techniques.</li>
 </ul>
 <hr />
-<h3 id="5-header-injection">5. Header Injection</h3>
-<ul>
-<li>JWT Header Injection uses <strong>custom JWK headers</strong> to <strong>bypass verification</strong>.</li>
-</ul>
-<h4 id="steps">Steps:</h4>
-<ol>
-<li>Install Burp Extensions: <code>JWT Editor</code>, <code>JSON Web Token</code></li>
-<li>Generate a <strong>new RSA key</strong> in the extension</li>
-<li>Go to the request in Repeater ➡️ JWT Editor ➡️ <code>Attack</code> ➡️ <code>Embedded JWK</code></li>
-<li>Select your custom RSA key ➡️ Send the request</li>
-</ol>
-<hr />
-<h3 id="6-kid-injection">6. KID Injection</h3>
-<ul>
-<li>The <code>kid</code> parameter can be exploited by pointing to <strong>file directories</strong>.</li>
-</ul>
-<h4 id="steps_1">Steps:</h4>
-<ol>
-<li>In JWT Editor Keys ➡️ Create a <strong>New Symmetric Key</strong></li>
-<li>Change the <code>k</code> value to base64-encoded null byte: <code>AA==</code></li>
-<li>In Repeater ➡️ JWT Editor ➡️ Modify <code>kid</code> to:<br />
-<code>../../../../../dev/null</code></li>
-<li>Sign the JWT using the same symmetric key.</li>
-</ol>
-<hr />
-<h3 id="7-algorithm-confusion-in-jwt">7. Algorithm Confusion in JWT</h3>
-<ul>
-<li>Happens when you get access to the <strong>JWK token</strong> from <code>/jwks.json</code>.</li>
-</ul>
-<h4 id="steps_2">Steps:</h4>
-<ol>
-<li>Get the JWK key from <code>/jwks.json</code></li>
-<li>In Burp JWT Editor ➡️ <code>New RSA Key</code> ➡️ Use <code>JWK</code> format</li>
-<li>Copy Public Key as PEM ➡️ Encode it in Base64</li>
-<li>Create a <strong>New Symmetric Key</strong>, replace the <code>k</code> value with Base64</li>
-<li>Modify JWT values and <strong>sign using the symmetric key</strong></li>
-</ol>
-<hr />
 <h2 id="bug-bounty-tip">🧪 Bug Bounty Tip</h2>
 <ul>
 <li>Always <strong>create two user accounts</strong>.</li>
