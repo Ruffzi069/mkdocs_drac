@@ -224,15 +224,20 @@
 </li>
 <li>
 <p><strong>Postman</strong> – Test endpoints with and without CSRF tokens.
+<pre><code>
 ```html
 POST /update_email HTTP/1.1
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
-Cookie: sessionid=12345</p>
+Cookie: sessionid=12345
+<br>
+email=attacker@example.com
+```
+</code></pre>
+</p>
 </li>
 </ul>
-<p>email=attacker@example.com
-  ```</p>
+</p>
 <hr /></p>
     </article>
 </section>
