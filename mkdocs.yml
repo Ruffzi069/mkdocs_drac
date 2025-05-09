@@ -1,0 +1,18 @@
+site_name: DBugs's Bug Hunts
+site_url: https://DBugs.org
+nav:
+    - Home: index.md
+    - Vulnerabilities:
+      - Recon: Vulnerabilities/recon.md
+      - JWT AUTHENTICATION: Vulnerabilities/JWT_AUTHENTICATION_BYPASS.md
+      - XSS : Vulnerabilities/XSS.md
+      - SQL INJECTION: Vulnerabilities/SQL Injection.md
+      - CSRF: Vulnerabilities/csrf.md
+
+
+
+theme:
+  name: dracula
+  logo: assets/img/dracula.png
+  favicon: assets/img/demnn.png
+
