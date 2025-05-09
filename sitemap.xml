@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://DBugs.org/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://DBugs.org/Vulnerabilities/JWT_AUTHENTICATION_BYPASS/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://DBugs.org/Vulnerabilities/SQL%20Injection/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://DBugs.org/Vulnerabilities/XSS/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://DBugs.org/Vulnerabilities/csrf/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://DBugs.org/Vulnerabilities/recon/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+    <url>
+         <loc>https://DBugs.org/nav/getting-started/</loc>
+         <lastmod>2025-05-09</lastmod>
+    </url>
+</urlset>

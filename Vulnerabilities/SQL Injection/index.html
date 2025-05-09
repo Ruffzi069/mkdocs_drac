@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <title>SQL INJECTION - DBugs's Bug Hunts</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel="canonical" href="https://DBugs.org/Vulnerabilities/SQL%20Injection/">
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../../assets/css/mkdocs.min.css">
+
+        
+            <link  rel="icon" type="image/x-icon" href="../../assets/img/demnn.png">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../../assets/img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">DBugs's Bug Hunts</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#vulnerabilities-collapse" aria-expanded="false">
+                    Vulnerabilities
+                </a>
+                <div class="collapse" id="vulnerabilities-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../recon/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Recon
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../JWT_AUTHENTICATION_BYPASS/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            JWT AUTHENTICATION
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../XSS/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            XSS
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            SQL INJECTION
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../csrf/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            CSRF
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../XSS/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../csrf/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><h1 id="sql-injection-cheat-sheet">SQL Injection Cheat Sheet</h1>
+<p>SQL Injection is a vulnerability that allows attackers to interfere with the queries an application makes to its database. This document outlines different techniques and tools for exploiting SQL Injection vulnerabilities.</p>
+<hr />
+<h2 id="manual-automated-testing">🧪 Manual &amp; Automated Testing</h2>
+<ul>
+<li>Basic SQLi testing starts with either manual payloads or automated tools like <strong>SQLmap</strong>.</li>
+<li>Manual techniques include:</li>
+<li><code>UNION</code> based attacks</li>
+<li><code>ORDER BY</code> clause testing</li>
+<li>Error-based enumeration</li>
+</ul>
+<h3 id="sqlmap-flags">🔧 SQLmap Flags:</h3>
+<ul>
+<li><code>--dbs</code> : Enumerate databases</li>
+<li><code>-D [DATABASE NAME] --tables</code> : List tables in a specific database</li>
+<li><code>-D [DATABASE] -T [TABLE] --dump</code> : Dump columns and data from a specific table</li>
+</ul>
+<hr />
+<h2 id="blind-sql-injection">🕶️ Blind SQL Injection</h2>
+<p>Blind SQLi occurs when the application does not display database errors but still reacts differently based on the query's logic.</p>
+<h3 id="substring-based-attacks">🔡 SUBSTRING Based Attacks</h3>
+<ul>
+<li>Brute force character by character:
+  <code>sql
+  SELECT substring(database(),1,1)
+  SELECT if(substring(database(),1,1)='a',SLEEP(3),'a')
+  SELECT if(substring(database(),1,1)&gt;'g',SLEEP(3),'a')</code></li>
+</ul>
+<h3 id="boolean-based-sqli">🧮 Boolean Based SQLi</h3>
+<ul>
+<li>Test logic:
+  <code>sql
+  ' AND 1=1 -- -
+  ' AND 1=2 -- -</code></li>
+</ul>
+<h3 id="time-based-sqli">⏱️ Time Based SQLi</h3>
+<ul>
+<li>Time delay if condition is true:
+  <code>sql
+  SELECT SLEEP(10)</code></li>
+</ul>
+<h3 id="error-based-sqli">💥 Error Based SQLi</h3>
+<ul>
+<li>
+<p>Example using <code>CASE</code> statement:
+  <img alt="image.png" src="../../assets/image_1737020823461_0.png" /></p>
+</li>
+<li>
+<p>Conditionally returns 'a' if false:
+  <code>sql
+  SELECT CASE WHEN (condition) THEN '' ELSE 'a' END</code></p>
+</li>
+<li>
+<p>Further reference: <a href="https://www.db-fiddle.com/f/nLpyQDMd49iRygnY9H7CB8/5">DB Fiddle Example</a></p>
+</li>
+</ul>
+<hr />
+<h2 id="blind-sqli-in-cookies-sessions">🕵️ Blind SQLi in Cookies / Sessions</h2>
+<ul>
+<li>Blind SQLi isn't limited to URL parameters.</li>
+<li>It can be hidden in:</li>
+<li><strong>Session Tokens</strong></li>
+<li><strong>Cookies</strong></li>
+</ul>
+<h3 id="example">Example:</h3>
+<pre><code class="language-http">TrackingId=xyz'; SELECT SLEEP(10) --
+</code></pre>
+<p>Explore real-world labs at <strong>PortSwigger Web Security Academy</strong> for hands-on experience.</p>
+<hr />
+<h2 id="nosql-injection">🧬 NoSQL Injection</h2>
+<ul>
+<li>A unique form of injection targeting NoSQL databases like <strong>MongoDB</strong>.</li>
+<li>Most common injection points:</li>
+<li><code>username</code></li>
+<li><code>password</code></li>
+</ul>
+<h3 id="tips">Tips:</h3>
+<ul>
+<li>Consult the <a href="https://www.mongodb.com/">MongoDB Docs</a></li>
+<li>Logical flaws in queries are often exploited with JSON-based payloads.</li>
+</ul>
+<hr />
+<blockquote>
+<p>⚠️ Only test on systems you have <strong>explicit permission</strong> to test.</p>
+</blockquote>
+<hr />
+<p><strong>© 2025 Daksh Bhagwani | DBugs.org</strong></p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '../..';</script>
+        <script src="../../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/js/mkdocs.js"></script>
+			<script src="../../search/main.js" defer></script>
+
+</body>
+
+</html>

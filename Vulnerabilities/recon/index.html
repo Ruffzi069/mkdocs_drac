@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <title>Recon - DBugs's Bug Hunts</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel="canonical" href="https://DBugs.org/Vulnerabilities/recon/">
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../../assets/css/mkdocs.min.css">
+
+        
+            <link  rel="icon" type="image/x-icon" href="../../assets/img/demnn.png">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../../assets/img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">DBugs's Bug Hunts</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#vulnerabilities-collapse" aria-expanded="false">
+                    Vulnerabilities
+                </a>
+                <div class="collapse" id="vulnerabilities-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Recon
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../JWT_AUTHENTICATION_BYPASS/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            JWT AUTHENTICATION
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../XSS/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            XSS
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../SQL%20Injection/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            SQL INJECTION
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../csrf/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            CSRF
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../.."
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../JWT_AUTHENTICATION_BYPASS/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><h2 id="reconnaissance-techniques-recon">🔍 Reconnaissance Techniques (Recon)</h2>
+<h3 id="passive-recon">🔗 Passive Recon</h3>
+<p>Gathers information <strong>without directly interacting</strong> with the target.</p>
+<h4 id="tools-and-usage">Tools and Usage:</h4>
+<ul>
+<li>
+<p><strong>theHarvester</strong> – Gathers emails, subdomains, hosts, and more.
+  <code>bash
+  theHarvester -d example.com -b google</code></p>
+</li>
+<li>
+<p><strong>Subfinder</strong> – Fast passive subdomain enumeration.
+  <code>bash
+  subfinder -d example.com</code></p>
+</li>
+<li>
+<p><strong>crt.sh</strong> – Public certificate transparency log viewer.
+  <code>bash
+  curl https://crt.sh/?q=%.example.com&amp;output=json</code></p>
+</li>
+<li>
+<p><strong>GitHub Search/Dorking</strong> – Search for secrets in code.
+  <code>bash
+  site:github.com "example.com password"</code></p>
+</li>
+<li>
+<p><strong>Waybackurls</strong> – Fetch historical URLs.
+  <code>bash
+  echo example.com | waybackurls</code></p>
+</li>
+<li>
+<p><strong>Shodan</strong> – Search for devices/servers online.
+  <code>bash
+  shodan search "http.title:'Example Domain'"</code></p>
+</li>
+</ul>
+<hr />
+<h3 id="active-recon">🛠️ Active Recon</h3>
+<p>Interacts <strong>directly</strong> with the target.</p>
+<h4 id="tools-and-usage_1">Tools and Usage:</h4>
+<ul>
+<li>
+<p><strong>Sublist3r</strong> – Subdomain enumeration via OSINT.
+  <code>bash
+  sublist3r -d example.com</code></p>
+</li>
+<li>
+<p><strong>Nmap</strong> – Network scanner for open ports and services.
+  <code>bash
+  nmap -sV -p- example.com</code></p>
+</li>
+<li>
+<p><strong>Masscan</strong> – Very fast port scanner.
+  <code>bash
+  masscan -p1-65535 --rate=10000 example.com</code></p>
+</li>
+<li>
+<p><strong>ffuf</strong> – Fuzzing URLs for hidden files and directories.
+  <code>bash
+  ffuf -u https://example.com/FUZZ -w /usr/share/wordlists/dirb/common.txt</code></p>
+</li>
+<li>
+<p><strong>Dirsearch</strong> – Command-line directory brute-forcer.
+  <code>bash
+  python3 dirsearch.py -u https://example.com -e php,html</code></p>
+</li>
+<li>
+<p><strong>Gobuster</strong> – Directory and DNS scanner.
+  <code>bash
+  gobuster dir -u https://example.com -w /usr/share/wordlists/dirb/common.txt</code></p>
+</li>
+<li>
+<p><strong>Wappalyzer</strong> / <strong>WhatWeb</strong> – Detects technologies used.
+  <code>bash
+  whatweb example.com</code></p>
+</li>
+<li>
+<p><strong>ParamSpider</strong> – Finds hidden GET/POST parameters.
+  <code>bash
+  python3 paramspider.py --domain example.com</code></p>
+</li>
+<li>
+<p><strong>Arjun</strong> – Finds hidden HTTP parameters.
+  <code>bash
+  python3 arjun.py -u https://example.com/search</code></p>
+</li>
+<li>
+<p><strong>LinkFinder</strong> – Extracts endpoints from JavaScript files.
+  <code>bash
+  python3 linkfinder.py -i https://example.com/script.js -o cli</code></p>
+</li>
+</ul>
+<hr />
+<h2 id="summary-of-tools-and-purpose">🧰 Summary of Tools and Purpose</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Usage Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>theHarvester</td>
+<td>Email &amp; domain harvesting</td>
+<td><code>theHarvester -d example.com -b google</code></td>
+</tr>
+<tr>
+<td>Amass</td>
+<td>Subdomain enum</td>
+<td><code>amass enum -d example.com</code></td>
+</tr>
+<tr>
+<td>Subfinder</td>
+<td>Subdomain enum</td>
+<td><code>subfinder -d example.com</code></td>
+</tr>
+<tr>
+<td>Sublist3r</td>
+<td>Subdomain enum</td>
+<td><code>sublist3r -d example.com</code></td>
+</tr>
+<tr>
+<td>Nmap</td>
+<td>Port scanning</td>
+<td><code>nmap -sV -p- example.com</code></td>
+</tr>
+<tr>
+<td>Masscan</td>
+<td>Fast port scan</td>
+<td><code>masscan -p1-65535 example.com</code></td>
+</tr>
+<tr>
+<td>ffuf</td>
+<td>Directory fuzzing</td>
+<td><code>ffuf -u https://site.com/FUZZ -w wordlist</code></td>
+</tr>
+<tr>
+<td>Dirsearch</td>
+<td>Directory bruteforcing</td>
+<td><code>dirsearch -u https://example.com -e php</code></td>
+</tr>
+<tr>
+<td>Gobuster</td>
+<td>Dir &amp; DNS brute force</td>
+<td><code>gobuster dir -u https://example.com -w wordlist</code></td>
+</tr>
+<tr>
+<td>ParamSpider</td>
+<td>Hidden param discovery</td>
+<td><code>paramspider.py --domain example.com</code></td>
+</tr>
+<tr>
+<td>Arjun</td>
+<td>Param brute-forcing</td>
+<td><code>arjun.py -u https://site.com</code></td>
+</tr>
+<tr>
+<td>LinkFinder</td>
+<td>JS endpoint extraction</td>
+<td><code>linkfinder.py -i URL -o cli</code></td>
+</tr>
+<tr>
+<td>Burp Suite</td>
+<td>Manual security testing</td>
+<td>Intercept, modify, generate CSRF PoC</td>
+</tr>
+<tr>
+<td>Postman</td>
+<td>API testing</td>
+<td>Send raw HTTP requests</td>
+</tr>
+<tr>
+<td>WhatWeb</td>
+<td>Detect tech stack</td>
+<td><code>whatweb example.com</code></td>
+</tr>
+</tbody>
+</table></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '../..';</script>
+        <script src="../../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/js/mkdocs.js"></script>
+			<script src="../../search/main.js" defer></script>
+
+</body>
+
+</html>

