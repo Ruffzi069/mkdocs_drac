@@ -47,43 +47,6 @@ python3 jwt_tool.py [JWT_TOKEN] --crack -d [WORDLIST]
 
 ---
 
-### 5. Header Injection
-- JWT Header Injection uses **custom JWK headers** to **bypass verification**.
-
-#### Steps:
-1. Install Burp Extensions: `JWT Editor`, `JSON Web Token`
-2. Generate a **new RSA key** in the extension
-3. Go to the request in Repeater ➡️ JWT Editor ➡️ `Attack` ➡️ `Embedded JWK`
-4. Select your custom RSA key ➡️ Send the request
-
----
-
-### 6. KID Injection
-- The `kid` parameter can be exploited by pointing to **file directories**.
-
-#### Steps:
-1. In JWT Editor Keys ➡️ Create a **New Symmetric Key**
-2. Change the `k` value to base64-encoded null byte: `AA==`
-3. In Repeater ➡️ JWT Editor ➡️ Modify `kid` to:  
-   ```
-   ../../../../../dev/null
-   ```
-4. Sign the JWT using the same symmetric key.
-
----
-
-### 7. Algorithm Confusion in JWT
-- Happens when you get access to the **JWK token** from `/jwks.json`.
-
-#### Steps:
-1. Get the JWK key from `/jwks.json`
-2. In Burp JWT Editor ➡️ `New RSA Key` ➡️ Use `JWK` format
-3. Copy Public Key as PEM ➡️ Encode it in Base64
-4. Create a **New Symmetric Key**, replace the `k` value with Base64
-5. Modify JWT values and **sign using the symmetric key**
-
----
-
 ## 🧪 Bug Bounty Tip
 
 - Always **create two user accounts**.
