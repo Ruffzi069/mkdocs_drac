@@ -234,12 +234,6 @@ Tested:   https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.htmlHELLO
 <li>Use platforms like <a href="https://xss.report/dashboard">https://xss.report/dashboard</a></li>
 <li>Inject payloads into input fields, headers, or metadata.</li>
 </ol>
-<h3 id="why-it-matters">Why it matters:</h3>
-<p>If the app stores sensitive data (like tokens) in localStorage/sessionStorage, you can extract it.</p>
-<pre><code class="language-html">&lt;script&gt;alert(localStorage.hjUserAttributes)&lt;/script&gt;
-</code></pre>
-<p>This leads to:
-<strong>CORS → XSS → ATO (Account Takeover)</strong></p>
 <hr />
 <blockquote>
 <p>⚠️ Always perform testing on sites you <strong>own</strong> or have <strong>explicit permission</strong> to test.</p>
