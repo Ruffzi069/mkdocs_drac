@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>XSS - DBugs's Bug Hunts</title>
+        <title>XSS - BBC 101 Workshop</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
 
         <div class="drac-text-center">
             
-                <span class="drac-text drac-line-height drac-text-white">DBugs's Bug Hunts</span>
+                <span class="drac-text drac-line-height drac-text-white">BBC 101 Workshop</span>
             
         </div>
 
@@ -200,14 +200,14 @@
         <p><h1 id="cross-site-scripting-xss-cheat-sheet">Cross-Site Scripting (XSS) Cheat Sheet</h1>
 <p>Cross-Site Scripting (XSS) is a vulnerability that allows attackers to inject malicious scripts into web pages viewed by others. This document covers different types of XSS and tools to detect and exploit them.</p>
 <hr />
-<h2 id="parameter-based-xss">Parameter-Based XSS</h2>
+<h2 id="parameter-based-xss">🔍 Parameter-Based XSS</h2>
 <p>Not all XSS vulnerabilities are found via search fields — many appear in URL parameters.</p>
 <h3 id="example">Example:</h3>
 <pre><code>https://www.fenixlight.com/product/index.php?id=37%22%3E%3Cimg%20src=x%20onerror=alert(1)%3E&amp;type=7%22%3E%3Cimg%20src=x%20onerror=alert(1)%3E
 </code></pre>
 <p>In this example, the <code>id</code> and <code>type</code> parameters are injected with a script payload.</p>
 <hr />
-<h2 id="url-path-based-xss">URL Path-Based XSS</h2>
+<h2 id="url-path-based-xss">🧪 URL Path-Based XSS</h2>
 <p>Sometimes the vulnerability lies in the <strong>URL path</strong>, not just parameters.</p>
 <h3 id="example_1">Example:</h3>
 <pre><code>Original: https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.html  
@@ -217,7 +217,7 @@ Tested:   https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.htmlHELLO
 <pre><code class="language-js">-prompt(8)-
 </code></pre>
 <hr />
-<h2 id="dom-based-xss">DOM-Based XSS</h2>
+<h2 id="dom-based-xss">⚙️ DOM-Based XSS</h2>
 <p>DOM-Based XSS occurs when the vulnerability is within JavaScript running in the page, not in the HTML response.</p>
 <h3 id="example_2">Example:</h3>
 <pre><code class="language-html">&lt;input type='hidden' id='utm_medium' value=''&gt;
@@ -227,7 +227,7 @@ Tested:   https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.htmlHELLO
 </code></pre>
 <p>If the frontend JavaScript reflects <code>utm_medium</code> content into the DOM unsafely, you're vulnerable.</p>
 <hr />
-<h2 id="blind-xss">Blind XSS</h2>
+<h2 id="blind-xss">🕵️ Blind XSS</h2>
 <p>With <strong>Blind XSS</strong>, the payload doesn't execute immediately. Instead, it gets triggered when viewed in an admin panel or backend dashboard.</p>
 <h3 id="steps">Steps:</h3>
 <ol>
@@ -241,7 +241,7 @@ Tested:   https://kwabey.com/buy/adorable-sitexcxcxcscscsdc.htmlHELLO
 <p>This leads to:
 <strong>CORS → XSS → ATO (Account Takeover)</strong></p>
 <hr />
-<h2 id="useful-commands-tools">Useful Commands &amp; Tools</h2>
+<h2 id="useful-commands-tools">🛠️ Useful Commands &amp; Tools</h2>
 <h3 id="terminal-one-liner">Terminal One-Liner:</h3>
 <pre><code class="language-bash">echo https://www.oshi.pk | gau | gf XSS | uro | gxss | kxss | tee out.txt
 </code></pre>

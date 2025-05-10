@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>CSRF - DBugs's Bug Hunts</title>
+        <title>CSRF - BBC 101 Workshop</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
 
         <div class="drac-text-center">
             
-                <span class="drac-text drac-line-height drac-text-white">DBugs's Bug Hunts</span>
+                <span class="drac-text drac-line-height drac-text-white">BBC 101 Workshop</span>
             
         </div>
 
@@ -197,24 +197,24 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h2 id="csrf-cross-site-request-forgery">CSRF (Cross-Site Request Forgery)</h2>
-<h3 id="definition">Definition</h3>
+        <p><h2 id="csrf-cross-site-request-forgery">🛡️ CSRF (Cross-Site Request Forgery)</h2>
+<h3 id="definition">📖 Definition</h3>
 <p>CSRF exploits the trust a web app has in the user's browser, making <strong>unauthorized actions</strong> on behalf of an authenticated user.</p>
-<h3 id="example-attack">Example Attack</h3>
+<h3 id="example-attack">⚠️ Example Attack</h3>
 <pre><code class="language-html">&lt;form action=&quot;https://bank.com/transfer&quot; method=&quot;POST&quot;&gt;
   &lt;input type=&quot;hidden&quot; name=&quot;to&quot; value=&quot;attacker&quot;&gt;
   &lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;1000&quot;&gt;
 &lt;/form&gt;
 &lt;script&gt;document.forms[0].submit();&lt;/script&gt;
 </code></pre>
-<h3 id="mitigations">Mitigations</h3>
+<h3 id="mitigations">✅ Mitigations</h3>
 <ul>
 <li>Use <strong>CSRF tokens</strong> in forms.</li>
 <li>Set <strong>SameSite</strong> cookies.</li>
 <li>Use <strong>double submit cookie</strong> strategy.</li>
 <li>Require <strong>user interaction or re-authentication</strong> for sensitive actions.</li>
 </ul>
-<h3 id="testing-tools">Testing Tools:</h3>
+<h3 id="testing-tools">🔧 Testing Tools:</h3>
 <ul>
 <li>
 <p><strong>Burp Suite</strong> – Intercept and manipulate CSRF-prone requests.</p>
@@ -224,18 +224,15 @@
 </li>
 <li>
 <p><strong>Postman</strong> – Test endpoints with and without CSRF tokens.
-<pre><code>
+```html
 POST /update_email HTTP/1.1
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
-Cookie: sessionid=12345
-<br>
-email=attacker@example.com
-</code></pre>
-</p>
+Cookie: sessionid=12345</p>
 </li>
 </ul>
-</p>
+<p>email=attacker@example.com
+  ```</p>
 <hr /></p>
     </article>
 </section>

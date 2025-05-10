@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>SQL INJECTION - DBugs's Bug Hunts</title>
+        <title>SQL INJECTION - BBC 101 Workshop</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
 
         <div class="drac-text-center">
             
-                <span class="drac-text drac-line-height drac-text-white">DBugs's Bug Hunts</span>
+                <span class="drac-text drac-line-height drac-text-white">BBC 101 Workshop</span>
             
         </div>
 
@@ -200,7 +200,7 @@
         <p><h1 id="sql-injection-cheat-sheet">SQL Injection Cheat Sheet</h1>
 <p>SQL Injection is a vulnerability that allows attackers to interfere with the queries an application makes to its database. This document outlines different techniques and tools for exploiting SQL Injection vulnerabilities.</p>
 <hr />
-<h2 id="manual-automated-testing">Manual &amp; Automated Testing</h2>
+<h2 id="manual-automated-testing">🧪 Manual &amp; Automated Testing</h2>
 <ul>
 <li>Basic SQLi testing starts with either manual payloads or automated tools like <strong>SQLmap</strong>.</li>
 <li>Manual techniques include:</li>
@@ -208,16 +208,16 @@
 <li><code>ORDER BY</code> clause testing</li>
 <li>Error-based enumeration</li>
 </ul>
-<h3 id="sqlmap-flags">SQLmap Flags:</h3>
+<h3 id="sqlmap-flags">🔧 SQLmap Flags:</h3>
 <ul>
 <li><code>--dbs</code> : Enumerate databases</li>
 <li><code>-D [DATABASE NAME] --tables</code> : List tables in a specific database</li>
 <li><code>-D [DATABASE] -T [TABLE] --dump</code> : Dump columns and data from a specific table</li>
 </ul>
 <hr />
-<h2 id="blind-sql-injection">Blind SQL Injection</h2>
+<h2 id="blind-sql-injection">🕶️ Blind SQL Injection</h2>
 <p>Blind SQLi occurs when the application does not display database errors but still reacts differently based on the query's logic.</p>
-<h3 id="substring-based-attacks">SUBSTRING Based Attacks</h3>
+<h3 id="substring-based-attacks">🔡 SUBSTRING Based Attacks</h3>
 <ul>
 <li>Brute force character by character:
   <code>sql
@@ -225,20 +225,20 @@
   SELECT if(substring(database(),1,1)='a',SLEEP(3),'a')
   SELECT if(substring(database(),1,1)&gt;'g',SLEEP(3),'a')</code></li>
 </ul>
-<h3 id="boolean-based-sqli">Boolean Based SQLi</h3>
+<h3 id="boolean-based-sqli">🧮 Boolean Based SQLi</h3>
 <ul>
 <li>Test logic:
   <code>sql
   ' AND 1=1 -- -
   ' AND 1=2 -- -</code></li>
 </ul>
-<h3 id="time-based-sqli">Time Based SQLi</h3>
+<h3 id="time-based-sqli">⏱️ Time Based SQLi</h3>
 <ul>
 <li>Time delay if condition is true:
   <code>sql
   SELECT SLEEP(10)</code></li>
 </ul>
-<h3 id="error-based-sqli">Error Based SQLi</h3>
+<h3 id="error-based-sqli">💥 Error Based SQLi</h3>
 <ul>
 <li>
 <p>Example using <code>CASE</code> statement:
@@ -254,7 +254,7 @@
 </li>
 </ul>
 <hr />
-<h2 id="blind-sqli-in-cookies-sessions">Blind SQLi in Cookies / Sessions</h2>
+<h2 id="blind-sqli-in-cookies-sessions">🕵️ Blind SQLi in Cookies / Sessions</h2>
 <ul>
 <li>Blind SQLi isn't limited to URL parameters.</li>
 <li>It can be hidden in:</li>
@@ -266,7 +266,7 @@
 </code></pre>
 <p>Explore real-world labs at <strong>PortSwigger Web Security Academy</strong> for hands-on experience.</p>
 <hr />
-<h2 id="nosql-injection">NoSQL Injection</h2>
+<h2 id="nosql-injection">🧬 NoSQL Injection</h2>
 <ul>
 <li>A unique form of injection targeting NoSQL databases like <strong>MongoDB</strong>.</li>
 <li>Most common injection points:</li>
@@ -280,7 +280,7 @@
 </ul>
 <hr />
 <blockquote>
-<p>Only test on systems you have <strong>explicit permission</strong> to test.</p>
+<p>⚠️ Only test on systems you have <strong>explicit permission</strong> to test.</p>
 </blockquote>
 <hr />
 <p><strong>© 2025 Daksh Bhagwani | DBugs.org</strong></p></p>
